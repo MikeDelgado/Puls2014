@@ -1,0 +1,14 @@
+(defstruct board 
+	squares  ;current board configurations
+	player   ;player who gets to move)
+
+
+(defvar *board-width* 3 "Width of a tic-tac-toe board") 
+(defvar *look-ahead* 3 "Number of plies to look ahead")
+(defvar *min-player* 'o "The minimizing player")
+(defvar *max-player* 'x "The maximizing player")
+
+(defmacro iterate (name bindings &body body)
+	'(labels ((,name ,(mapcar #'firts bindings),@body))
+	(,name ,@(mapcar #'second bindings))))
+
